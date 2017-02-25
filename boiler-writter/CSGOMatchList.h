@@ -12,6 +12,7 @@ class CSGOMatchList
 public:
 
 	CSGOMatchList();
+	CSGOMatchList(uint64 matchId, uint64 outcomeId, uint32 tokenId);
 	~CSGOMatchList();
 
 	void Refresh();
@@ -23,6 +24,10 @@ private:
 	void OnMatchList(const CMsgGCCStrike15_v2_MatchList& msg);
 
 private:
+	bool m_onlySpecificMatch;
+	uint64 m_matchId;
+	uint64 m_outcomeId;
+	uint32 m_tokenId;
 	bool m_updateComplete;
 	std::condition_variable m_updateCv;
 	mutable std::mutex m_matchMutex;

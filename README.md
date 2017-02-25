@@ -14,8 +14,10 @@ As [Steamworks.NET](http://steamworks.github.io/) doesn't provide a way to commu
 ## Usage
 
 ```
-boiler.exe path_to_the_file_where_data_will_be_written
+boiler.exe path_to_the_file_where_data_will_be_written [matchId outcomeId tokenId]
 ```
+
+The 3 optionals parameters are from a [CMsgGCCStrike15_v2_MatchListRequestFullGameInfo](https://github.com/SteamRE/SteamKit/blob/master/Resources/Protobufs/csgo/cstrike15_gcmessages.proto#L744) message. If they are specified, it will write the CMsgGCCStrike15_v2_MatchList message for this specific match.
 
 ## Build
 

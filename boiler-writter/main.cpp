@@ -1,4 +1,5 @@
 #include <steam/steam_api.h>
+#include <thread>
 #include <fstream>
 #include <iostream>
 #include "CSGOMatchList.h"
@@ -70,6 +71,7 @@ int main(int argc, char *argv[]) {
 				return -5;
 			}
 		};
+		return 0;
 	});
 
 	int result = 0;

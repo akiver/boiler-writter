@@ -1,0 +1,358 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		890805EC1EFB46970001629C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 890805EB1EFB46970001629C /* main.cpp */; };
+		890805FC1EFB46F50001629C /* BoilerException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 890805F51EFB46F50001629C /* BoilerException.cpp */; };
+		890805FD1EFB46F50001629C /* CSGOClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 890805F71EFB46F50001629C /* CSGOClient.cpp */; };
+		890805FE1EFB46F50001629C /* CSGOMatchList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 890805F91EFB46F50001629C /* CSGOMatchList.cpp */; };
+		890806111EFB474C0001629C /* cstrike15_gcmessages.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 890806091EFB474C0001629C /* cstrike15_gcmessages.pb.cc */; };
+		890806121EFB474C0001629C /* gcsdk_gcmessages.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8908060B1EFB474C0001629C /* gcsdk_gcmessages.pb.cc */; };
+		890806131EFB474C0001629C /* gcsystemmsgs.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8908060D1EFB474C0001629C /* gcsystemmsgs.pb.cc */; };
+		890806141EFB474C0001629C /* steammessages.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8908060F1EFB474C0001629C /* steammessages.pb.cc */; };
+		896B0DDB1EFC5FDD00502FE2 /* libprotobuf.8.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 896B0DDA1EFC5FDD00502FE2 /* libprotobuf.8.dylib */; };
+		896B0DE21EFC652700502FE2 /* libsteam_api.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 896B0DE11EFC652700502FE2 /* libsteam_api.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		890805E61EFB46970001629C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		890805E81EFB46970001629C /* boiler-writter */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "boiler-writter"; sourceTree = BUILT_PRODUCTS_DIR; };
+		890805EB1EFB46970001629C /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		890805F51EFB46F50001629C /* BoilerException.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoilerException.cpp; sourceTree = "<group>"; };
+		890805F61EFB46F50001629C /* BoilerException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoilerException.h; sourceTree = "<group>"; };
+		890805F71EFB46F50001629C /* CSGOClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSGOClient.cpp; sourceTree = "<group>"; };
+		890805F81EFB46F50001629C /* CSGOClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSGOClient.h; sourceTree = "<group>"; };
+		890805F91EFB46F50001629C /* CSGOMatchList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSGOMatchList.cpp; sourceTree = "<group>"; };
+		890805FA1EFB46F50001629C /* CSGOMatchList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSGOMatchList.h; sourceTree = "<group>"; };
+		890805FB1EFB46F50001629C /* GCMsgHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCMsgHandler.h; sourceTree = "<group>"; };
+		890806091EFB474C0001629C /* cstrike15_gcmessages.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cstrike15_gcmessages.pb.cc; sourceTree = "<group>"; };
+		8908060A1EFB474C0001629C /* cstrike15_gcmessages.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cstrike15_gcmessages.pb.h; sourceTree = "<group>"; };
+		8908060B1EFB474C0001629C /* gcsdk_gcmessages.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gcsdk_gcmessages.pb.cc; sourceTree = "<group>"; };
+		8908060C1EFB474C0001629C /* gcsdk_gcmessages.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gcsdk_gcmessages.pb.h; sourceTree = "<group>"; };
+		8908060D1EFB474C0001629C /* gcsystemmsgs.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gcsystemmsgs.pb.cc; sourceTree = "<group>"; };
+		8908060E1EFB474C0001629C /* gcsystemmsgs.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gcsystemmsgs.pb.h; sourceTree = "<group>"; };
+		8908060F1EFB474C0001629C /* steammessages.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = steammessages.pb.cc; sourceTree = "<group>"; };
+		890806101EFB474C0001629C /* steammessages.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = steammessages.pb.h; sourceTree = "<group>"; };
+		896B0DDA1EFC5FDD00502FE2 /* libprotobuf.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libprotobuf.8.dylib; path = /usr/local/lib/libprotobuf.8.dylib; sourceTree = "<group>"; };
+		896B0DE11EFC652700502FE2 /* libsteam_api.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsteam_api.dylib; path = steamworks_sdk/redistributable_bin/osx32/libsteam_api.dylib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		890805E51EFB46970001629C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				896B0DDB1EFC5FDD00502FE2 /* libprotobuf.8.dylib in Frameworks */,
+				896B0DE21EFC652700502FE2 /* libsteam_api.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		890805DF1EFB46970001629C = {
+			isa = PBXGroup;
+			children = (
+				890805EA1EFB46970001629C /* boiler-writter */,
+				890805E91EFB46970001629C /* Products */,
+				896B0DD91EFC5FDC00502FE2 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		890805E91EFB46970001629C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				890805E81EFB46970001629C /* boiler-writter */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		890805EA1EFB46970001629C /* boiler-writter */ = {
+			isa = PBXGroup;
+			children = (
+				890806081EFB474C0001629C /* protobuf */,
+				890805F51EFB46F50001629C /* BoilerException.cpp */,
+				890805F61EFB46F50001629C /* BoilerException.h */,
+				890805F71EFB46F50001629C /* CSGOClient.cpp */,
+				890805F81EFB46F50001629C /* CSGOClient.h */,
+				890805F91EFB46F50001629C /* CSGOMatchList.cpp */,
+				890805FA1EFB46F50001629C /* CSGOMatchList.h */,
+				890805FB1EFB46F50001629C /* GCMsgHandler.h */,
+				890805EB1EFB46970001629C /* main.cpp */,
+			);
+			path = "boiler-writter";
+			sourceTree = "<group>";
+		};
+		890806081EFB474C0001629C /* protobuf */ = {
+			isa = PBXGroup;
+			children = (
+				890806091EFB474C0001629C /* cstrike15_gcmessages.pb.cc */,
+				8908060A1EFB474C0001629C /* cstrike15_gcmessages.pb.h */,
+				8908060B1EFB474C0001629C /* gcsdk_gcmessages.pb.cc */,
+				8908060C1EFB474C0001629C /* gcsdk_gcmessages.pb.h */,
+				8908060D1EFB474C0001629C /* gcsystemmsgs.pb.cc */,
+				8908060E1EFB474C0001629C /* gcsystemmsgs.pb.h */,
+				8908060F1EFB474C0001629C /* steammessages.pb.cc */,
+				890806101EFB474C0001629C /* steammessages.pb.h */,
+			);
+			path = protobuf;
+			sourceTree = "<group>";
+		};
+		896B0DD91EFC5FDC00502FE2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				896B0DE11EFC652700502FE2 /* libsteam_api.dylib */,
+				896B0DDA1EFC5FDD00502FE2 /* libprotobuf.8.dylib */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		890805E71EFB46970001629C /* boiler-writter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 890805EF1EFB46970001629C /* Build configuration list for PBXNativeTarget "boiler-writter" */;
+			buildPhases = (
+				890805E41EFB46970001629C /* Sources */,
+				890805E51EFB46970001629C /* Frameworks */,
+				890805E61EFB46970001629C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "boiler-writter";
+			productName = "boiler-writter";
+			productReference = 890805E81EFB46970001629C /* boiler-writter */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		890805E01EFB46970001629C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = akiver;
+				TargetAttributes = {
+					890805E71EFB46970001629C = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 890805E31EFB46970001629C /* Build configuration list for PBXProject "boiler-writter" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 890805DF1EFB46970001629C;
+			productRefGroup = 890805E91EFB46970001629C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				890805E71EFB46970001629C /* boiler-writter */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		890805E41EFB46970001629C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				890805FD1EFB46F50001629C /* CSGOClient.cpp in Sources */,
+				890806141EFB474C0001629C /* steammessages.pb.cc in Sources */,
+				890806121EFB474C0001629C /* gcsdk_gcmessages.pb.cc in Sources */,
+				890805FC1EFB46F50001629C /* BoilerException.cpp in Sources */,
+				890806131EFB474C0001629C /* gcsystemmsgs.pb.cc in Sources */,
+				890805EC1EFB46970001629C /* main.cpp in Sources */,
+				890805FE1EFB46F50001629C /* CSGOMatchList.cpp in Sources */,
+				890806111EFB474C0001629C /* cstrike15_gcmessages.pb.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		890805ED1EFB46970001629C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/steamworks_sdk/public",
+					/usr/local/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/steamworks_sdk/redistributable_bin/osx32",
+					/usr/local/lib,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-undefined",
+					dynamic_lookup,
+				);
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		890805EE1EFB46970001629C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/steamworks_sdk/public",
+					/usr/local/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/steamworks_sdk/redistributable_bin/osx32",
+					/usr/local/lib,
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = (
+					"-undefined",
+					dynamic_lookup,
+				);
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		890805F01EFB46970001629C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/steamworks_sdk/redistributable_bin/osx32",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		890805F11EFB46970001629C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/steamworks_sdk/redistributable_bin/osx32",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		890805E31EFB46970001629C /* Build configuration list for PBXProject "boiler-writter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				890805ED1EFB46970001629C /* Debug */,
+				890805EE1EFB46970001629C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		890805EF1EFB46970001629C /* Build configuration list for PBXNativeTarget "boiler-writter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				890805F01EFB46970001629C /* Debug */,
+				890805F11EFB46970001629C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 890805E01EFB46970001629C /* Project object */;
+}

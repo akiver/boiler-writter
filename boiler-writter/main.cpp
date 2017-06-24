@@ -12,14 +12,14 @@ int process(CSGOMatchList& refresher, char* outputPath) {
 	std::cerr << matchListData.matches_size() << std::endl;
 
 	if (matchListData.matches_size() == 0) {
-		return -8;
+		return 8;
 	}
 	// save data into a file
 	std::string fileDestination(outputPath);
 	std::ofstream file;
 	file.open(fileDestination, std::ios::binary);
 	if (!matchListData.SerializeToOstream(&file)) {
-		return -7;
+		return 7;
 	}
 	file.close();
 
@@ -35,29 +35,29 @@ int process(CSGOMatchList& refresher, char* outputPath) {
 // Args[3]: optional outcomeid
 // Args[4]: optional tokenid
 // Possible values returned:
-// -1 No output file path
-// -2 Steam needs to be restarted
-// -3 Steam isn't running or not logged on
-// -4 Steam communication trouble
-// -5 Error while communicating with Steam GC
-// -6 Error while getting Matches information
-// -7 Error while serializing data
-// -8 No matches found
+// 1 No output file path
+// 2 Steam needs to be restarted
+// 3 Steam isn't running or not logged on
+// 4 Steam communication trouble
+// 5 Error while communicating with Steam GC
+// 6 Error while getting Matches information
+// 7 Error while serializing data
+// 8 No matches found
 // 0  OK
 int main(int argc, char *argv[]) {
 	bool isRecentMatchRequest = argc == 2;
 	if (!isRecentMatchRequest && argc != 5) {
-		std::cerr << "boiler.exe path_to_output_file [matchid outcomeid tokenid]" << std::endl;
-		return -1;
+		std::cout << "boiler.exe path_to_output_file [matchid outcomeid tokenid]" << std::endl;
+		return 1;
 	}
 	if (SteamAPI_RestartAppIfNecessary(k_uAppIdInvalid)) {
-		return -2;
+		return 2;
 	}
 	if (!SteamAPI_Init()) {
-		return -3;
+		return 3;
 	}
 	if (!SteamUser()->BLoggedOn()) {
-		return -4;
+		return 4;
 	}
 
 	bool running = true;
@@ -68,7 +68,7 @@ int main(int argc, char *argv[]) {
 				Steam_RunCallbacks(GetHSteamPipe(), false);
 			}
 			catch (std::exception &e) {
-				return -5;
+				return 5;
 			}
 		};
 		return 0;
@@ -93,7 +93,7 @@ int main(int argc, char *argv[]) {
 		}
 	}
 	catch (std::exception &e) {
-		return -6;
+		return 6;
 	}
 
 	// shutdown

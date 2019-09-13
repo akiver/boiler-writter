@@ -41,9 +41,10 @@ Build tested on Windows and MAC OS (Sierra).
 ### MAC OS
 
 1. Install Protobuf from sources, steps are in the README but you should do:
-	- ./configure
-	- make
-	- make install
+	1. `LANG=C LC_CTYPE=C ./autogen.sh`
+	2. `./configure`
+	3. `make`
+	4. `make install`
 2. Check if it has been installed by running `protoc --version`.
 By default header files should have been installed in `/usr/local/include` and lib in `/usr/local/lib`. This is where Xcode assume that they are located but you can change it if you want from Xcode.
 3. Launch the project in Xcode
@@ -52,4 +53,4 @@ By default header files should have been installed in `/usr/local/include` and l
 
 ## License
 
-It use the original [Boiler](https://bitbucket.org/ACB/boiler/) license [GPL v3](https://github.com/akiver/boiler-writter/blob/master/license.txt)
+It uses the original [Boiler](https://bitbucket.org/ACB/boiler/) license [GPL v3](https://github.com/akiver/boiler-writter/blob/master/license.txt)

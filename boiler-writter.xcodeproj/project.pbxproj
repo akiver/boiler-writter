@@ -15,24 +15,29 @@
 		890806121EFB474C0001629C /* gcsdk_gcmessages.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8908060B1EFB474C0001629C /* gcsdk_gcmessages.pb.cc */; };
 		890806131EFB474C0001629C /* gcsystemmsgs.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8908060D1EFB474C0001629C /* gcsystemmsgs.pb.cc */; };
 		890806141EFB474C0001629C /* steammessages.pb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8908060F1EFB474C0001629C /* steammessages.pb.cc */; };
-		896B0DDB1EFC5FDD00502FE2 /* libprotobuf.8.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 896B0DDA1EFC5FDD00502FE2 /* libprotobuf.8.dylib */; };
-		896B0DE21EFC652700502FE2 /* libsteam_api.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 896B0DE11EFC652700502FE2 /* libsteam_api.dylib */; };
+		8D972894232B671C0007EFED /* libsteam_api.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D972893232B671C0007EFED /* libsteam_api.dylib */; };
+		8D972897232B68430007EFED /* libsteam_api.dylib in Copy Files */ = {isa = PBXBuildFile; fileRef = 8D972893232B671C0007EFED /* libsteam_api.dylib */; };
+		8D97289A232B6E500007EFED /* libprotobuf.8.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D972899232B6E500007EFED /* libprotobuf.8.dylib */; };
+		8D97289B232B6F150007EFED /* libprotobuf.8.dylib in Copy Files */ = {isa = PBXBuildFile; fileRef = 8D972899232B6E500007EFED /* libprotobuf.8.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		890805E61EFB46970001629C /* CopyFiles */ = {
+		890805E61EFB46970001629C /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 16;
 			files = (
+				8D97289B232B6F150007EFED /* libprotobuf.8.dylib in Copy Files */,
+				8D972897232B68430007EFED /* libsteam_api.dylib in Copy Files */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			name = "Copy Files";
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		890805E81EFB46970001629C /* boiler-writter */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "boiler-writter"; sourceTree = BUILT_PRODUCTS_DIR; };
+		890805E81EFB46970001629C /* boiler-writter */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "compiled.mach-o.executable"; path = "boiler-writter"; sourceTree = BUILT_PRODUCTS_DIR; };
 		890805EB1EFB46970001629C /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		890805F51EFB46F50001629C /* BoilerException.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BoilerException.cpp; sourceTree = "<group>"; };
 		890805F61EFB46F50001629C /* BoilerException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoilerException.h; sourceTree = "<group>"; };
@@ -49,8 +54,8 @@
 		8908060E1EFB474C0001629C /* gcsystemmsgs.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gcsystemmsgs.pb.h; sourceTree = "<group>"; };
 		8908060F1EFB474C0001629C /* steammessages.pb.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = steammessages.pb.cc; sourceTree = "<group>"; };
 		890806101EFB474C0001629C /* steammessages.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = steammessages.pb.h; sourceTree = "<group>"; };
-		896B0DDA1EFC5FDD00502FE2 /* libprotobuf.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libprotobuf.8.dylib; path = /usr/local/lib/libprotobuf.8.dylib; sourceTree = "<group>"; };
-		896B0DE11EFC652700502FE2 /* libsteam_api.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsteam_api.dylib; path = steamworks_sdk/redistributable_bin/osx32/libsteam_api.dylib; sourceTree = "<group>"; };
+		8D972893232B671C0007EFED /* libsteam_api.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsteam_api.dylib; path = steamworks_sdk/redistributable_bin/osx/libsteam_api.dylib; sourceTree = "<group>"; };
+		8D972899232B6E500007EFED /* libprotobuf.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libprotobuf.8.dylib; path = /usr/local/lib/libprotobuf.8.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +63,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				896B0DDB1EFC5FDD00502FE2 /* libprotobuf.8.dylib in Frameworks */,
-				896B0DE21EFC652700502FE2 /* libsteam_api.dylib in Frameworks */,
+				8D97289A232B6E500007EFED /* libprotobuf.8.dylib in Frameworks */,
+				8D972894232B671C0007EFED /* libsteam_api.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,8 +122,8 @@
 		896B0DD91EFC5FDC00502FE2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				896B0DE11EFC652700502FE2 /* libsteam_api.dylib */,
-				896B0DDA1EFC5FDD00502FE2 /* libprotobuf.8.dylib */,
+				8D972899232B6E500007EFED /* libprotobuf.8.dylib */,
+				8D972893232B671C0007EFED /* libsteam_api.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -132,7 +137,8 @@
 			buildPhases = (
 				890805E41EFB46970001629C /* Sources */,
 				890805E51EFB46970001629C /* Frameworks */,
-				890805E61EFB46970001629C /* CopyFiles */,
+				890805E61EFB46970001629C /* Copy Files */,
+				8D97289C232B707C0007EFED /* Update protobuf lib linking */,
 			);
 			buildRules = (
 			);
@@ -163,6 +169,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 890805DF1EFB46970001629C;
@@ -174,6 +181,27 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8D97289C232B707C0007EFED /* Update protobuf lib linking */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Update protobuf lib linking";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "install_name_tool -change /usr/local/lib/libprotobuf.8.dylib  @loader_path/libprotobuf.8.dylib \"$TARGET_BUILD_DIR/$TARGET_NAME\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		890805E41EFB46970001629C /* Sources */ = {
@@ -315,6 +343,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/steamworks_sdk/redistributable_bin/osx32",
+					"$(PROJECT_DIR)/steamworks_sdk/redistributable_bin/osx",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -326,6 +355,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/steamworks_sdk/redistributable_bin/osx32",
+					"$(PROJECT_DIR)/steamworks_sdk/redistributable_bin/osx",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

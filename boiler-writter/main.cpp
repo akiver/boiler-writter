@@ -81,6 +81,8 @@ int main(int argc, char *argv[]) {
 		// make sure we are connected to the gc
 		CSGOClient::GetInstance()->WaitForGcConnect();
 
+		printf("STEAMID:%lld", SteamUser()->GetSteamID().ConvertToUint64());
+
 		if (isRecentMatchRequest) {
 			CSGOMatchList refresher;
 			result = process(refresher, argv[1]);

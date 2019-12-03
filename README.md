@@ -41,14 +41,15 @@ Build tested on Windows and MAC OS (Sierra).
 ### MAC OS
 
 1. Install Protobuf from sources, steps are in the README but you should do:
-	1. `LANG=C LC_CTYPE=C ./autogen.sh`
-	2. `./configure`
-	3. `make`
-	4. `make install`
+   1. `brew install automake autoconf libtool`
+   2. `./autogen.sh` (You may have to run `LANG=C LC_CTYPE=C ./autogen.sh` instead of `./autogen.sh`)
+   3. `./configure`
+   4. `make`
+   5. `make install`
 2. Check if it has been installed by running `protoc --version`.
-By default header files should have been installed in `/usr/local/include` and lib in `/usr/local/lib`. This is where Xcode assume that they are located but you can change it if you want from Xcode.
+   By default header files should have been installed in `/usr/local/include` and lib in `/usr/local/lib`. This is where Xcode assume that they are located but you can change it if you want from Xcode.
 3. Launch the project in Xcode
-4. Make sure `libsteam_api.dylib` and `libprotobuf.8.dylib` are in the **Linked Frameworks and Libraries** from *General* tab.
+4. Make sure `libsteam_api.dylib` and `libprotobuf.8.dylib` are in the **Linked Frameworks and Libraries** from _General_ tab.
 5. Build the project
 
 ## License

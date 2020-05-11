@@ -65,7 +65,7 @@ int main(int argc, char *argv[]) {
 		while (running) {
 			try {
 				std::this_thread::sleep_for(std::chrono::milliseconds(50));
-				Steam_RunCallbacks(GetHSteamPipe(), false);
+				SteamAPI_RunCallbacks();
 			}
 			catch (std::exception &e) {
 				return 5;

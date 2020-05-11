@@ -28,8 +28,8 @@ CSGOClient::CSGOClient()
 	, m_welcomeHandler(this, &CSGOClient::OnClientWelcome)
 {
 	m_gameCoordinator = (ISteamGameCoordinator*)SteamClient()
-		->GetISteamGenericInterface(GetHSteamUser(),
-			GetHSteamPipe(),
+		->GetISteamGenericInterface(SteamAPI_GetHSteamUser(),
+			SteamAPI_GetHSteamPipe(),
 			STEAMGAMECOORDINATOR_INTERFACE_VERSION);
 
 	RegisterHandler(k_EMsgGCClientWelcome, &m_welcomeHandler);

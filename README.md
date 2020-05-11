@@ -14,14 +14,14 @@ As [Steamworks.NET](http://steamworks.github.io/) doesn't provide a way to commu
 ## Usage
 
 ```
-./boiler path_to_the_file_where_data_will_be_written [matchId outcomeId tokenId]
+./boiler-writter path_to_the_file_where_data_will_be_written [matchId outcomeId tokenId]
 ```
 
 The 3 optionals parameters are from a [CMsgGCCStrike15_v2_MatchListRequestFullGameInfo](https://github.com/SteamRE/SteamKit/blob/master/Resources/Protobufs/csgo/cstrike15_gcmessages.proto#L744) message. If they are specified, it will write the CMsgGCCStrike15_v2_MatchList message for this specific match.
 
 ## Build
 
-Build tested on Windows and MAC OS (Sierra).
+Build tested on Windows, MAC OS (Sierra) and Linux.
 
 ### Common tasks
 
@@ -51,6 +51,23 @@ Build tested on Windows and MAC OS (Sierra).
 3. Launch the project in Xcode
 4. Make sure `libsteam_api.dylib` and `libprotobuf.8.dylib` are in the **Linked Frameworks and Libraries** from _General_ tab.
 5. Build the project
+
+### Linux
+
+**Tested on Ubuntu 19.10**
+
+1. Install [CMake](https://cmake.org/download/)
+2. `sudo apt install gcc gcc-multilib g++-multilib`
+3. Install protobuf 2.5.0 from source
+   1. `wget https://github.com/protocolbuffers/protobuf/releases/download/v2.5.0/protobuf-2.5.0.tar.gz`
+   2. `tar -zxvf protobuf-2.5.0.tar.gz && cd protobuf-2.5.0`
+   3. `./configure`
+   4. `make`
+   5. `make install`
+   6. `sudo ldconfig`
+4. `cmake . -B build` (add `-DCMAKE_BUILD_TYPE="Release"` for release build)
+5. `cmake --build build`
+6. Executable will be in the `build` folder
 
 ## License
 

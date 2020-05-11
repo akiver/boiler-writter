@@ -26,9 +26,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <steam/steam_api.h>
 #include <steam/isteamgamecoordinator.h>
-#include "protobuf/cstrike15_gcmessages.pb.h"
-#include "protobuf/gcsdk_gcmessages.pb.h"
-#include "protobuf/gcsystemmsgs.pb.h"
+#include "cstrike15_gcmessages.pb.h"
+#include "gcsdk_gcmessages.pb.h"
+#include "gcsystemmsgs.pb.h"
 
 #include "GCMsgHandler.h"
 

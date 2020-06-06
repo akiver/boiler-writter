@@ -30,6 +30,7 @@ Build tested on Windows, MAC OS (Sierra) and Linux.
 3. Extract it into the solution root folder and rename the folder to "steamworks_sdk"
 4. Download the [protobuf 2.5.0](https://github.com/google/protobuf/releases/tag/v2.5.0) sources
 5. Extract it into the solution root folder
+6. Install [CMake](https://cmake.org/download/)
 
 ### Windows
 
@@ -48,9 +49,11 @@ Build tested on Windows, MAC OS (Sierra) and Linux.
    5. `make install`
 2. Check if it has been installed by running `protoc --version`.
    By default header files should have been installed in `/usr/local/include` and lib in `/usr/local/lib`. This is where Xcode assume that they are located but you can change it if you want from Xcode.
-3. Launch the project in Xcode
-4. Make sure `libsteam_api.dylib` and `libprotobuf.8.dylib` are in the **Linked Frameworks and Libraries** from _General_ tab.
-5. Build the project
+3. `cmake .` (add `-DCMAKE_BUILD_TYPE="Release"` for release build)
+4. `cmake --build .`
+5. Executable will be in the `bin` folder
+
+If you want to generate an Xcode project `cmake -G Xcode`.
 
 ### Linux
 
@@ -65,9 +68,9 @@ Build tested on Windows, MAC OS (Sierra) and Linux.
    4. `make`
    5. `make install`
    6. `sudo ldconfig`
-4. `cmake . -B build` (add `-DCMAKE_BUILD_TYPE="Release"` for release build)
-5. `cmake --build build`
-6. Executable will be in the `build` folder
+4. `cmake .` (add `-DCMAKE_BUILD_TYPE="Release"` for release build)
+5. `cmake --build`
+6. Executable will be in the `bin` folder
 
 ## License
 

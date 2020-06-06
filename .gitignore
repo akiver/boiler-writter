@@ -1,5 +1,14 @@
 .DS_Store
 protobuf-2.5.0
 steamworks_sdk
-build
 xcuserdata/
+bin
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+cmake_install.cmake
+makefile
+/*.cc
+/*.h
+BoilerWritter.build
+BoilerWritter.xcodeproj

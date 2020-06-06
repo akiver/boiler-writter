@@ -1,7 +1,8 @@
-cmake_minimum_required(VERSION 3.0.2 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.17.2 FATAL_ERROR)
 project(BoilerWritter)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread --std=c++11")
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -62,3 +63,6 @@ source_group("Protobuf Files" FILES
     boiler-writter/protobuf/gcsdk_gcmessages.proto
     boiler-writter/protobuf/engine_gcmessages.proto
     boiler-writter/protobuf/gcsystemmsgs.proto)
+
+file(COPY ${STEAMWORKS_LIBRARY} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
+file(COPY "steam_appid.txt" DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})

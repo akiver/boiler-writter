@@ -12,3 +12,10 @@ makefile
 /*.h
 BoilerWritter.build
 BoilerWritter.xcodeproj
+boiler-writter.dir
+Debug
+Release
+win32
+*.vcxproj*
+*.sln
+.vs

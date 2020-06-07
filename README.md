@@ -27,17 +27,22 @@ Build tested on Windows, MAC OS (Sierra) and Linux.
 
 1. Download the repo and extract it
 2. Download the [Steamworks SDK](https://partner.steamgames.com/)
-3. Extract it into the solution root folder and rename the folder to "steamworks_sdk"
-4. Download the [protobuf 2.5.0](https://github.com/google/protobuf/releases/tag/v2.5.0) sources
-5. Extract it into the solution root folder
-6. Install [CMake](https://cmake.org/download/)
+3. Extract it into the solution root folder and rename the folder to `steamworks_sdk`
+4. Install [CMake](https://cmake.org/download/)
 
 ### Windows
 
-1. Launch the protobuf solution in Visual Studio
-2. Compile the project "libprotobuf" (Debug or / and Release)
-3. Launch the boiler-writter solution
-4. Build
+1. Download the [protobuf 2.5.0](https://github.com/google/protobuf/releases/tag/v2.5.0) source code
+2. Extract it into the solution root folder and make sure the folder's name is `protobuf-2.5.0`
+3. Launch the protobuf solution `protobuf-2.5.0/vsprojects/protobuf.sln` in Visual Studio and migrate projects if required
+4. Add `_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS` in `libprotobuf Project properties -> C/C++ -> Preprocessor Definitions` (Debug and / or Release config)
+5. Add `#include <algorithm>` in the file `zero_copy_stream_impl_lite.h`
+6. Compile the project **libprotobuf** (Debug and / or Release)
+7. `cmake . -DCMAKE_GENERATOR_PLATFORM=win32` (Add `-DCMAKE_BUILD_TYPE="Release"` to generate the project for Release build)
+8. `cmake --build .` (Add `--config Release` if building for Release build)
+9. Executable will be in the `bin` folder
+
+A VS solution `BoilerWritter.sln` is also available.
 
 ### MAC OS
 

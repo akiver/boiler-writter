@@ -13,6 +13,8 @@ As [Steamworks.NET](http://steamworks.github.io/) doesn't provide a way to commu
 
 ## Usage
 
+Ready to use executable for each platform can be downloaded from [GitHub](https://github.com/akiver/boiler-writter/releases).
+
 ```
 ./boiler-writter path_to_the_file_where_data_will_be_written [matchId outcomeId tokenId]
 ```

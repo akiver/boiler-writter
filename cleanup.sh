@@ -1,1 +1,1 @@
-rm -Rf CMakeFiles bin CMakeCache.txt *.vcxproj* *.sln .vs
+rm -Rf CMakeFiles CMakeScripts cmake_install.cmake CMakeCache.txt Makefile bin *.vcxproj* *.sln .vs BoilerWritter.build BoilerWritter.xcodeproj

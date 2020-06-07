@@ -7,7 +7,7 @@ CMakeCache.txt
 CMakeFiles
 CMakeScripts
 cmake_install.cmake
-makefile
+Makefile
 /*.cc
 /*.h
 BoilerWritter.build
@@ -16,6 +16,7 @@ boiler-writter.dir
 Debug
 Release
 win32
+build
 *.vcxproj*
 *.sln
 .vs

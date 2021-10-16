@@ -36,13 +36,15 @@ Build tested on Windows 10, MAC OS (Catalina) and Linux (Ubuntu 20).
 
 ### Windows
 
-1. Launch the protobuf solution `protobuf-2.5.0/vsprojects/protobuf.sln` in Visual Studio and migrate projects if required
-2. Add `_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS` in `libprotobuf Project properties -> C/C++ -> Preprocessor Definitions` (Debug and / or Release config)
-3. Add `#include <algorithm>` in the file `zero_copy_stream_impl_lite.h`
-4. Compile the project **libprotobuf** (Using Debug and / or Release)
-5. `cmake . -DCMAKE_GENERATOR_PLATFORM=win32` (Add `-DCMAKE_BUILD_TYPE="Release"` to generate the project for Release build)
-6. `cmake --build .` (Add `--config Release` if building for Release build)
-7. Executable will be in the `bin` folder
+1. Download the [protoc 2.5.0 precompiled Windows binary](https://github.com/protocolbuffers/protobuf/releases/download/v2.5.0/protoc-2.5.0-win32.zip) and extract it in a folder included in your `PATH` env variable
+2. Ensure `protoc` is installed by running `protoc --version` from a cmd
+3. Launch the protobuf solution `protobuf-2.5.0/vsprojects/protobuf.sln` in Visual Studio and migrate projects if required
+4. Add `_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS` in `libprotobuf Project properties -> C/C++ -> Preprocessor Definitions` (Debug and / or Release config)
+5. Add `#include <algorithm>` in the file `zero_copy_stream_impl_lite.h`
+6. Compile the project **libprotobuf** (Using Debug and / or Release)
+7. `cmake . -DCMAKE_GENERATOR_PLATFORM=win32` (Add `-DCMAKE_BUILD_TYPE="Release"` to generate the project for Release build)
+8. `cmake --build .` (Add `--config Release` if building for Release build)
+9. Executable will be in the `bin` folder
 
 A VS solution `BoilerWritter.sln` is also available.
 
@@ -50,7 +52,7 @@ A VS solution `BoilerWritter.sln` is also available.
 
 1. Install protobuf 2.5.0, from the folder `protobuf-2.5.0` run:
    1. `brew install automake autoconf libtool`
-   2. `./autogen.sh` (You may have to run `LANG=C LC_CTYPE=C ./autogen.sh` instead of `./autogen.sh`)
+   2. `autoreconf -f -i -Wall,no-obsolete`
    3. `./configure`
    4. `make`
    5. `make install`
@@ -63,12 +65,13 @@ If you want to generate an Xcode project `cmake -G Xcode`.
 
 ### Linux
 
-1. `sudo apt install gcc gcc-multilib g++-multilib`
+1. `sudo apt install build-essential autoconf gcc gcc-multilib g++-multilib libtool`
 2. Install protobuf 2.5.0, from the folder `protobuf-2.5.0` run:
-   1. `./configure`
-   2. `make`
-   3. `make install`
-   4. `sudo ldconfig`
+   1. `autoreconf -f -i -Wall,no-obsolete`
+   2. `./configure`
+   3. `make`
+   4. `sudo make install`
+   5. `sudo ldconfig`
 3. `cmake .` (add `-DCMAKE_BUILD_TYPE="Release"` for release build)
 4. `cmake --build .`
 5. Executable will be in the `bin` folder

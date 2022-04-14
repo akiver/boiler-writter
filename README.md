@@ -33,6 +33,12 @@ Build tested on Windows 10, MAC OS (Catalina) and Linux (Ubuntu 20).
 4. Download the [protobuf 2.5.0](https://github.com/google/protobuf/releases/tag/v2.5.0) source code
 5. Extract it into the root folder and make sure the folder's name is `protobuf-2.5.0`
 6. Install [CMake](https://cmake.org/download/)
+7. If you have an ARM64 CPU, add the following code in `protobuf-2.5.0/src/google/protobuf/stubs/platform_macros.h` after the line 59:
+   ```
+   #elif defined(__arm64__)
+   #define GOOGLE_PROTOBUF_ARCH_ARM 1
+   #define GOOGLE_PROTOBUF_ARCH_64_BIT 1
+   ```
 
 ### Windows
 
@@ -57,7 +63,7 @@ A VS solution `BoilerWritter.sln` is also available.
    4. `make`
    5. `make install`
 2. Check if it has been installed by running `protoc --version`
-3. `cmake .` (add `-DCMAKE_BUILD_TYPE="Release"` for release build)
+3. From the root project folder: `cmake .` (add `-DCMAKE_BUILD_TYPE="Release"` for release build)
 4. `cmake --build .`
 5. Executable will be in the `bin` folder
 

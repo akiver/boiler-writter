@@ -96,7 +96,6 @@ private:
 	GCMsgHandler<CMsgClientWelcome> m_welcomeHandler;
 	std::condition_variable m_connectedCV;
 	std::mutex m_connectedMutex;
-	bool m_connectedToGc = false;
 
 	ISteamGameCoordinator* m_gameCoordinator;
 

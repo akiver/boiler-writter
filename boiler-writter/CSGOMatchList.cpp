@@ -40,13 +40,13 @@ void CSGOMatchList::Refresh()
 		request.set_outcomeid(m_outcomeId);
 		request.set_token(m_tokenId);
 		if (CSGOClient::GetInstance()->SendGCMessage(k_EMsgGCCStrike15_v2_MatchListRequestFullGameInfo, &request) != k_EGCResultOK)
-			throw BoilerException("Failed to send k_EMsgGCCStrike15_v2_MatchListRequestFullGameInfo");
+			throw BoilerException(BoilerExitCode::CommunicationFailure, "Failed to send k_EMsgGCCStrike15_v2_MatchListRequestFullGameInfo");
 	}
 	else {
 		CMsgGCCStrike15_v2_MatchListRequestRecentUserGames request;
 		request.set_accountid(SteamUser()->GetSteamID().GetAccountID());
 		if (CSGOClient::GetInstance()->SendGCMessage(k_EMsgGCCStrike15_v2_MatchListRequestRecentUserGames, &request) != k_EGCResultOK)
-			throw BoilerException("Failed to send EMsgGCCStrike15_v2_MatchListRequestRecentUserGames");
+			throw BoilerException(BoilerExitCode::CommunicationFailure, "Failed to send EMsgGCCStrike15_v2_MatchListRequestRecentUserGames");
 	}
 }
 
@@ -55,8 +55,10 @@ void CSGOMatchList::RefreshWait()
 	m_updateComplete = false;
 	Refresh();
 	std::unique_lock<std::mutex> lock(m_matchMutex);
-	while (!m_updateComplete)
-		m_updateCv.wait(lock);
+	std::cv_status status = m_updateCv.wait_for(lock, std::chrono::seconds(10));
+	if (status == std::cv_status::timeout) {
+		throw BoilerException(BoilerExitCode::AlreadyConnectedToGC, "Already connected to GC, matches can't be received");
+	}
 }
 
 const CMsgGCCStrike15_v2_MatchList& CSGOMatchList::GetMatchListData() const {

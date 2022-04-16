@@ -3,27 +3,26 @@
 #include <fstream>
 #include <iostream>
 #include "CSGOMatchList.h"
+#include "BoilerException.h"
 
 int process(CSGOMatchList& refresher, char* outputPath) {
 	// refresh match list
 	refresher.RefreshWait();
 
 	CMsgGCCStrike15_v2_MatchList matchListData = refresher.GetMatchListData();
-	std::cerr << matchListData.matches_size() << std::endl;
 
 	if (matchListData.matches_size() == 0) {
-		return 8;
+		return (int)BoilerExitCode::NoMatchesFound;
 	}
-	// save data into a file
 	std::string fileDestination(outputPath);
 	std::ofstream file;
 	file.open(fileDestination, std::ios::binary);
 	if (!matchListData.SerializeToOstream(&file)) {
-		return 7;
+		return (int)BoilerExitCode::WriteFileFailure;
 	}
 	file.close();
 
-	return 0;
+	return (int)BoilerExitCode::Success;
 }
 
 // Retrieve the match list data from Steam GC and write its data to a file
@@ -34,30 +33,21 @@ int process(CSGOMatchList& refresher, char* outputPath) {
 // Args[2]: optional matchid
 // Args[3]: optional outcomeid
 // Args[4]: optional tokenid
-// Possible values returned:
-// 1 No output file path
-// 2 Steam needs to be restarted
-// 3 Steam isn't running or not logged on
-// 4 Steam communication trouble
-// 5 Error while communicating with Steam GC
-// 6 Error while getting Matches information
-// 7 Error while serializing data
-// 8 No matches found
-// 0  OK
+// The process exit with a specific code, see the enum BoilerExitCode for possible values.
 int main(int argc, char *argv[]) {
 	bool isRecentMatchRequest = argc == 2;
 	if (!isRecentMatchRequest && argc != 5) {
 		std::cout << "boiler.exe path_to_output_file [matchid outcomeid tokenid]" << std::endl;
-		return 1;
+		return (int)BoilerExitCode::InvalidArgs;
 	}
 	if (SteamAPI_RestartAppIfNecessary(k_uAppIdInvalid)) {
-		return 2;
+		return (int)BoilerExitCode::SteamRestartRequired;
 	}
 	if (!SteamAPI_Init()) {
-		return 3;
+		return (int)BoilerExitCode::SteamNotRunningOrLoggedIn;
 	}
 	if (!SteamUser()->BLoggedOn()) {
-		return 4;
+		return (int)BoilerExitCode::SteamUserNotLoggedIn;
 	}
 
 	bool running = true;
@@ -67,11 +57,16 @@ int main(int argc, char *argv[]) {
 				std::this_thread::sleep_for(std::chrono::milliseconds(50));
 				SteamAPI_RunCallbacks();
 			}
-			catch (std::exception &e) {
-				return 5;
+			catch (BoilerException &e) {
+				fprintf(stderr, e.what());
+				exit(e.getExitCode());
+			}
+			catch (std::exception& e) {
+				fprintf(stderr, "Fatal error:\n");
+				fprintf(stderr, e.what());
+				exit((int)BoilerExitCode::FatalError);
 			}
 		};
-		return 0;
 	});
 
 	int result = 0;
@@ -81,7 +76,7 @@ int main(int argc, char *argv[]) {
 		// make sure we are connected to the gc
 		CSGOClient::GetInstance()->WaitForGcConnect();
 
-		printf("STEAMID:%lld", SteamUser()->GetSteamID().ConvertToUint64());
+		printf("STEAMID:%lld\n", SteamUser()->GetSteamID().ConvertToUint64());
 
 		if (isRecentMatchRequest) {
 			CSGOMatchList refresher;
@@ -94,8 +89,14 @@ int main(int argc, char *argv[]) {
 			result = process(refresher, argv[1]);
 		}
 	}
-	catch (std::exception &e) {
-		return 6;
+	catch (BoilerException& e) {
+		fprintf(stderr, e.what());
+		result = e.getExitCode();
+	}
+	catch (std::exception& e) {
+		fprintf(stderr, "Fatal error:\n");
+		fprintf(stderr, e.what());
+		result = (int)BoilerExitCode::FatalError;
 	}
 
 	// shutdown

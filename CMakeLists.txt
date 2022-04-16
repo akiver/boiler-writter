@@ -39,6 +39,7 @@ add_executable(boiler-writter
     boiler-writter/CSGOMatchList.cpp
 	boiler-writter/BoilerException.h
 	boiler-writter/BoilerException.cpp
+    boiler-writter/BoilerExitCode.h
     boiler-writter/protobuf/cstrike15_gcmessages.proto
     boiler-writter/protobuf/steammessages.proto
     boiler-writter/protobuf/gcsdk_gcmessages.proto

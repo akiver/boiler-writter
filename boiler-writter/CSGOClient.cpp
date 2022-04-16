@@ -37,7 +37,7 @@ CSGOClient::CSGOClient()
 	CMsgClientHello hello;
 	hello.set_client_session_need(1);
 	if (SendGCMessage(k_EMsgGCClientHello, &hello) != k_EGCResultOK)
-		throw BoilerException("failed to send GCClientHello");
+		throw BoilerException(BoilerExitCode::CommunicationFailure, "failed to send GCClientHello");
 
 }
 
@@ -82,7 +82,7 @@ void CSGOClient::OnMessageAvailable(GCMessageAvailable_t* msg)
 
 void CSGOClient::OnMessageFailed(GCMessageFailed_t* msg)
 {
-	throw BoilerException("failed to deliver GC message");
+	throw BoilerException(BoilerExitCode::CommunicationFailure, "failed to deliver GC message");
 }
 
 void CSGOClient::RegisterHandler(uint32 msgId, IGCMsgHandler* handler)
@@ -121,16 +121,18 @@ void CSGOClient::Destroy()
 
 void CSGOClient::WaitForGcConnect()
 {
-	if (m_connectedToGc)
-		return;
 	std::unique_lock<std::mutex> lock(m_connectedMutex);
 	// if this takes longer than 10 seconds we are already connected to the gc
-	m_connectedCV.wait_for(lock, std::chrono::seconds(10));
-	m_connectedToGc = true;
+	// only a single connection per appid is allowed to run and be connected to the user's Steam client.
+	// game's messaging doesn't work if we are already connected to the gc.
+	// it can happen when CSGO is already running or several boiler processes are running at the same time.
+	std::cv_status status = m_connectedCV.wait_for(lock, std::chrono::seconds(10));
+	if (status == std::cv_status::timeout) {
+		throw BoilerException(BoilerExitCode::AlreadyConnectedToGC, "Already connected to GC");
+	}
 }
 
 void CSGOClient::OnClientWelcome(const CMsgClientWelcome& msg)
 {
-	m_connectedToGc = true;
 	m_connectedCV.notify_all();
 }

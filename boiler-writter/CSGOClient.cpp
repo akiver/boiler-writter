@@ -33,12 +33,6 @@ CSGOClient::CSGOClient()
 			STEAMGAMECOORDINATOR_INTERFACE_VERSION);
 
 	RegisterHandler(k_EMsgGCClientWelcome, &m_welcomeHandler);
-
-	CMsgClientHello hello;
-	hello.set_client_session_need(1);
-	if (SendGCMessage(k_EMsgGCClientHello, &hello) != k_EGCResultOK)
-		throw BoilerException(BoilerExitCode::CommunicationFailure, "failed to send GCClientHello");
-
 }
 
 EGCResults CSGOClient::SendGCMessage(uint32 uMsgType, google::protobuf::Message* msg)
@@ -57,6 +51,13 @@ EGCResults CSGOClient::SendGCMessage(uint32 uMsgType, google::protobuf::Message*
 
 	return m_gameCoordinator->SendMessage(uMsgType, m_msgBuffer.data(),
 		msg->ByteSize() + 2 * sizeof(uint32));
+}
+
+void CSGOClient::SendHello() {
+	CMsgClientHello hello;
+	hello.set_client_session_need(1);
+	if (SendGCMessage(k_EMsgGCClientHello, &hello) != k_EGCResultOK)
+		throw BoilerException(BoilerExitCode::CommunicationFailure, "failed to send GCClientHello");
 }
 
 void CSGOClient::OnMessageAvailable(GCMessageAvailable_t* msg)
@@ -122,6 +123,10 @@ void CSGOClient::Destroy()
 void CSGOClient::WaitForGcConnect()
 {
 	std::unique_lock<std::mutex> lock(m_connectedMutex);
+	// wait a bit before sending the hello message otherwise we may not get the response
+	m_connectedCV.wait_for(lock, std::chrono::seconds(1));
+	SendHello();
+
 	// if this takes longer than 10 seconds we are already connected to the gc
 	// only a single connection per appid is allowed to run and be connected to the user's Steam client.
 	// game's messaging doesn't work if we are already connected to the gc.

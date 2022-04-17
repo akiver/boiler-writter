@@ -68,6 +68,8 @@ public:
 	*/
 	void WaitForGcConnect();
 
+	void SendHello();
+
 private:
 	/**
 	* sends client mm hello

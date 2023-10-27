@@ -1,10 +1,12 @@
 cmake_minimum_required(VERSION 3.17.2 FATAL_ERROR)
 project(BoilerWritter)
 
+file(MAKE_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
+set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_INSTALL_RPATH "$ORIGIN")
 set(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread --std=c++11")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/bin)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread --std=c++14")
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(Protobuf_USE_STATIC_LIBS ON)
@@ -19,8 +21,8 @@ if (WIN32)
     else()
         set(PROTOBUF_LIB_DIR Debug)
     endif()
-    set(Protobuf_SRC_ROOT_FOLDER ${CMAKE_CURRENT_SOURCE_DIR}/protobuf-2.5.0)
-    set(Protobuf_LIBRARIES ${CMAKE_CURRENT_SOURCE_DIR}/protobuf-2.5.0/vsprojects/${PROTOBUF_LIB_DIR}/libprotobuf.lib)
+    set(Protobuf_SRC_ROOT_FOLDER ${CMAKE_CURRENT_SOURCE_DIR}/protobuf)
+    set(Protobuf_LIBRARIES ${CMAKE_CURRENT_SOURCE_DIR}/protobuf/vsprojects/${PROTOBUF_LIB_DIR}/libprotobuf.lib)
 endif()
 
 find_package(Protobuf REQUIRED)
@@ -56,7 +58,8 @@ add_executable(boiler-writter
     ${ENGINE_PROTO_SOURCES}
     ${ENGINE_PROTO_HEADERS})
 
-include_directories("${STEAMWORKS_INCLUDE_DIR}" "${PROTOBUF_INCLUDE_DIR}")
+include_directories(${STEAMWORKS_INCLUDE_DIR})
+include_directories(${Protobuf_INCLUDE_DIRS})
 target_link_libraries(boiler-writter "${STEAMWORKS_LIBRARY}" ${Protobuf_LIBRARIES})
 
 source_group("Generated Files" FILES 

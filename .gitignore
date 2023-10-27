@@ -1,5 +1,5 @@
 .DS_Store
-protobuf-2.5.0
+/protobuf
 steamworks_sdk
 xcuserdata/
 bin

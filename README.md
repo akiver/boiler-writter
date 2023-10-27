@@ -30,21 +30,15 @@ Build tested on Windows 10, MAC OS (Catalina) and Linux (Ubuntu 20).
 1. Download the repo and extract it
 2. Download the [Steamworks SDK](https://partner.steamgames.com/)
 3. Extract it into the solution root folder and rename the folder to `steamworks_sdk`
-4. Download the [protobuf 2.5.0](https://github.com/google/protobuf/releases/tag/v2.5.0) source code
-5. Extract it into the root folder and make sure the folder's name is `protobuf-2.5.0`
+4. Download the [protobuf 3.20.3](https://github.com/protocolbuffers/protobuf/releases/tag/v3.20.3) source code
+5. Extract it into the root folder and make sure the folder's name is `protobuf`
 6. Install [CMake](https://cmake.org/download/)
-7. If you have an ARM64 CPU, add the following code in `protobuf-2.5.0/src/google/protobuf/stubs/platform_macros.h` after the line 59:
-   ```
-   #elif defined(__arm64__)
-   #define GOOGLE_PROTOBUF_ARCH_ARM 1
-   #define GOOGLE_PROTOBUF_ARCH_64_BIT 1
-   ```
 
 ### Windows
 
-1. Download the [protoc 2.5.0 precompiled Windows binary](https://github.com/protocolbuffers/protobuf/releases/download/v2.5.0/protoc-2.5.0-win32.zip) and extract it in a folder included in your `PATH` env variable
+1. Download the [protoc 3.20.3 precompiled Windows binary](https://github.com/protocolbuffers/protobuf/releases/download/v3.20.3/protoc-3.20.3-win32.zip) and extract it in a folder included in your `PATH` env variable
 2. Ensure `protoc` is installed by running `protoc --version` from a cmd
-3. Launch the protobuf solution `protobuf-2.5.0/vsprojects/protobuf.sln` in Visual Studio and migrate projects if required
+3. Launch the protobuf solution `protobuf/vsprojects/protobuf.sln` in Visual Studio and migrate projects if required
 4. Add `_SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS` in `libprotobuf Project properties -> C/C++ -> Preprocessor Definitions` (Debug and / or Release config)
 5. Add `#include <algorithm>` in the file `zero_copy_stream_impl_lite.h`
 6. Compile the project **libprotobuf** (Using Debug and / or Release)
@@ -56,12 +50,15 @@ A VS solution `BoilerWritter.sln` is also available.
 
 ### MAC OS
 
-1. Install protobuf 2.5.0, from the folder `protobuf-2.5.0` run:
+> **Note**  
+> To build the x86_64 version from an arm64 mac, run `/usr/bin/arch -x86_64 /bin/zsh ---login` before running the commands below.
+
+1. Install protobuf, from the folder `protobuf` run:
    1. `brew install automake autoconf libtool`
-   2. `autoreconf -f -i -Wall,no-obsolete`
-   3. `./configure`
-   4. `make`
-   5. `make install`
+   2. `./autogen.sh`
+   3. `./configure CXXFLAGS="-DNDEBUG"`
+   4. `make -j$(sysctl -n hw.physicalcpu)`
+   5. `sudo make install`
 2. Check if it has been installed by running `protoc --version`
 3. From the root project folder: `cmake .` (add `-DCMAKE_BUILD_TYPE="Release"` for release build)
 4. `cmake --build .`
@@ -72,7 +69,7 @@ If you want to generate an Xcode project `cmake -G Xcode`.
 ### Linux
 
 1. `sudo apt install build-essential autoconf gcc gcc-multilib g++-multilib libtool`
-2. Install protobuf 2.5.0, from the folder `protobuf-2.5.0` run:
+2. Install protobuf, from the folder `protobuf` run:
    1. `autoreconf -f -i -Wall,no-obsolete`
    2. `./configure`
    3. `make`
@@ -84,4 +81,4 @@ If you want to generate an Xcode project `cmake -G Xcode`.
 
 ## License
 
-It uses the original [Boiler](https://bitbucket.org/ACB/boiler/) license [GPL v3](https://github.com/akiver/boiler-writter/blob/master/license.txt)
+It uses the original [Boiler](https://bitbucket.org/ACB/boiler/) license [GPL v3](https://github.com/akiver/boiler-writter/blob/main/license.txt)

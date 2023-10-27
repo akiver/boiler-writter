@@ -10,6 +10,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread --std=c++14")
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(Protobuf_USE_STATIC_LIBS ON)
+set(Protobuf_SRC_ROOT_FOLDER ${CMAKE_CURRENT_SOURCE_DIR}/protobuf)
 
 include(FindPackageHandleStandardArgs)
 
@@ -18,11 +19,15 @@ find_package(Steamworks REQUIRED)
 if (WIN32)
     if(CMAKE_BUILD_TYPE MATCHES Release)
         set(PROTOBUF_LIB_DIR Release)
+        set(PROTOBUF_LIB_NAME libprotobuf)
+        set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded")
     else()
         set(PROTOBUF_LIB_DIR Debug)
+        set(PROTOBUF_LIB_NAME libprotobufd)
+        set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreadedDebug")
     endif()
-    set(Protobuf_SRC_ROOT_FOLDER ${CMAKE_CURRENT_SOURCE_DIR}/protobuf)
-    set(Protobuf_LIBRARIES ${CMAKE_CURRENT_SOURCE_DIR}/protobuf/vsprojects/${PROTOBUF_LIB_DIR}/libprotobuf.lib)
+
+    set(Protobuf_LIBRARIES ${CMAKE_CURRENT_SOURCE_DIR}/protobuf/cmake/${PROTOBUF_LIB_DIR}/${PROTOBUF_LIB_NAME}.lib)
 endif()
 
 find_package(Protobuf REQUIRED)
@@ -60,7 +65,7 @@ add_executable(boiler-writter
 
 include_directories(${STEAMWORKS_INCLUDE_DIR})
 include_directories(${Protobuf_INCLUDE_DIRS})
-target_link_libraries(boiler-writter "${STEAMWORKS_LIBRARY}" ${Protobuf_LIBRARIES})
+target_link_libraries(boiler-writter ${Protobuf_LIBRARIES} ${STEAMWORKS_LIBRARY})
 
 source_group("Generated Files" FILES 
     ${CSTRIKE_GC_PROTO_SOURCES}
@@ -84,7 +89,10 @@ source_group("Protobuf Files" FILES
 file(COPY "steam_appid.txt" DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
 
 if (WIN32) 
-    file(COPY ${STEAMWORKS_SDK_PATH}/${STEAMWORKS_BIN_PATH}/steam_api.dll DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
+    file(COPY ${STEAMWORKS_SDK_PATH}/${STEAMWORKS_BIN_PATH}/steam_api64.dll DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
+    add_custom_command(TARGET boiler-writter POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_BUILD_TYPE}/boiler-writter.exe ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
+    add_custom_command(TARGET boiler-writter POST_BUILD COMMAND ${CMAKE_COMMAND} -E remove_directory ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${CMAKE_BUILD_TYPE})
 else()
     file(COPY ${STEAMWORKS_LIBRARY} DESTINATION ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
 endif()
+

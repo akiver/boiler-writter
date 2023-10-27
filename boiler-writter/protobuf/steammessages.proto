@@ -1,8 +1,5 @@
 import "google/protobuf/descriptor.proto";
 
-option optimize_for = SPEED;
-option cc_generic_services = false;
-
 extend .google.protobuf.FieldOptions {
 	optional bool key_field = 60000 [default = false];
 }
@@ -67,7 +64,6 @@ message CMsgHttpRequest {
 }
 
 message CMsgWebAPIRequest {
-	optional string UNUSED_job_name = 1;
 	optional string interface_name = 2;
 	optional string method_name = 3;
 	optional uint32 version = 4;
@@ -366,6 +362,8 @@ message CGCSystemMsg_GetAccountDetails_Response {
 	optional uint32 rt_identity_linked = 35;
 	optional uint32 rt_birth_date = 36;
 	optional string txn_country_code = 37;
+	optional bool has_accepted_china_ssa = 38;
+	optional bool is_banned_steam_china = 39;
 }
 
 message CMsgGCGetPersonaNames {
@@ -407,6 +405,7 @@ message CMsgGCMsgMasterSetDirectory {
 
 message CMsgGCMsgMasterSetDirectory_Response {
 	optional int32 eresult = 1 [default = 2];
+	optional string message = 2;
 }
 
 message CMsgGCMsgWebAPIJobRequestForwardResponse {
@@ -439,6 +438,9 @@ message CMsgGCGetPartnerAccountLink {
 message CMsgGCGetPartnerAccountLink_Response {
 	optional uint32 pwid = 1;
 	optional uint32 nexonid = 2;
+	optional int32 ageclass = 3;
+	optional bool id_verified = 4 [default = true];
+	optional bool is_adult = 5;
 }
 
 message CMsgGCRoutingInfo {
@@ -582,4 +584,14 @@ message CMsgDPPartnerMicroTxnsResponse {
 
 	optional uint32 eresult = 1 [default = 2];
 	optional .CMsgDPPartnerMicroTxnsResponse.EErrorCode eerrorcode = 2 [default = k_MsgValid];
+}
+
+message CChinaAgreementSessions_StartAgreementSessionInGame_Request {
+	optional uint32 appid = 1;
+	optional fixed64 steamid = 2;
+	optional string client_ipaddress = 3;
+}
+
+message CChinaAgreementSessions_StartAgreementSessionInGame_Response {
+	optional string agreement_url = 1;
 }

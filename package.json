@@ -1,6 +1,6 @@
 {
   "name": "@akiver/boiler-writter",
-  "version": "1.3.2",
+  "version": "1.4.0",
   "description": "Retrieve your last Counter-Strike matchmaking matches data from the Steam Game Coordinator.",
   "author": "AkiVer",
   "license": "GPL-3.0",

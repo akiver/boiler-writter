@@ -53,8 +53,11 @@ void CSGOMatchList::Refresh()
 void CSGOMatchList::RefreshWait()
 {
 	m_updateComplete = false;
-	Refresh();
 	std::unique_lock<std::mutex> lock(m_matchMutex);
+	// wait a bit before sending the refreshing otherwise we may not get the response
+	m_updateCv.wait_for(lock, std::chrono::seconds(1));
+	Refresh();
+	
 	std::cv_status status = m_updateCv.wait_for(lock, std::chrono::seconds(10));
 	if (status == std::cv_status::timeout) {
 		throw BoilerException(BoilerExitCode::AlreadyConnectedToGC, "Already connected to GC, matches can't be received");

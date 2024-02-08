@@ -67,7 +67,7 @@ If you want to generate an Xcode project `cmake -G Xcode`.
 
 ### Linux
 
-1. `sudo apt install build-essential autoconf gcc gcc-multilib g++-multilib libtool`
+1. `sudo apt install build-essential autoconf gcc gcc-multilib g++-multilib libtool cmake`
 2. Install protobuf - from the root folder run:
    1. `cd protobuf`
    2. `./autogen.sh`

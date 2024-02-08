@@ -73,9 +73,6 @@ int main(int argc, char *argv[]) {
 
 	try
 	{
-		// make sure we are connected to the gc
-		CSGOClient::GetInstance()->WaitForGcConnect();
-
 		printf("STEAMID:%lld\n", SteamUser()->GetSteamID().ConvertToUint64());
 
 		if (isRecentMatchRequest) {

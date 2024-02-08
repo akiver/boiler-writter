@@ -63,13 +63,6 @@ public:
 	*/
 	void RemoveHandler(uint32 msgId, IGCMsgHandler* handler);
 
-	/**
-	* blocks until we are connected to the gc
-	*/
-	void WaitForGcConnect();
-
-	void SendHello();
-
 private:
 	/**
 	* sends client mm hello
@@ -87,16 +80,9 @@ private:
 	*/
 	void OnMessageFailed(GCMessageFailed_t* msg);
 
-	/**
-	* handles the gc welcome msg
-	*/
-	void OnClientWelcome(const CMsgClientWelcome& msg);
-
 private:
 	static CSGOClient* m_instance;
 
-	GCMsgHandler<CMsgClientWelcome> m_welcomeHandler;
-	std::condition_variable m_connectedCV;
 	std::mutex m_connectedMutex;
 
 	ISteamGameCoordinator* m_gameCoordinator;

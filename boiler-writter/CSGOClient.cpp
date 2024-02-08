@@ -25,14 +25,11 @@ CSGOClient* CSGOClient::m_instance = nullptr;
 CSGOClient::CSGOClient()
 	:m_availableCb(this, &CSGOClient::OnMessageAvailable)
 	, m_failedCb(this, &CSGOClient::OnMessageFailed)
-	, m_welcomeHandler(this, &CSGOClient::OnClientWelcome)
 {
 	m_gameCoordinator = (ISteamGameCoordinator*)SteamClient()
 		->GetISteamGenericInterface(SteamAPI_GetHSteamUser(),
 			SteamAPI_GetHSteamPipe(),
 			STEAMGAMECOORDINATOR_INTERFACE_VERSION);
-
-	RegisterHandler(k_EMsgGCClientWelcome, &m_welcomeHandler);
 }
 
 EGCResults CSGOClient::SendGCMessage(uint32 uMsgType, google::protobuf::Message* msg)
@@ -51,13 +48,6 @@ EGCResults CSGOClient::SendGCMessage(uint32 uMsgType, google::protobuf::Message*
 
 	return m_gameCoordinator->SendMessage(uMsgType, m_msgBuffer.data(),
 		msg->ByteSize() + 2 * sizeof(uint32));
-}
-
-void CSGOClient::SendHello() {
-	CMsgClientHello hello;
-	hello.set_client_session_need(1);
-	if (SendGCMessage(k_EMsgGCClientHello, &hello) != k_EGCResultOK)
-		throw BoilerException(BoilerExitCode::CommunicationFailure, "failed to send GCClientHello");
 }
 
 void CSGOClient::OnMessageAvailable(GCMessageAvailable_t* msg)
@@ -118,26 +108,4 @@ void CSGOClient::Destroy()
 {
 	delete m_instance;
 	m_instance = nullptr;
-}
-
-void CSGOClient::WaitForGcConnect()
-{
-	std::unique_lock<std::mutex> lock(m_connectedMutex);
-	// wait a bit before sending the hello message otherwise we may not get the response
-	m_connectedCV.wait_for(lock, std::chrono::seconds(1));
-	SendHello();
-
-	// if this takes longer than 10 seconds we are already connected to the gc
-	// only a single connection per appid is allowed to run and be connected to the user's Steam client.
-	// game's messaging doesn't work if we are already connected to the gc.
-	// it can happen when CSGO is already running or several boiler processes are running at the same time.
-	std::cv_status status = m_connectedCV.wait_for(lock, std::chrono::seconds(10));
-	if (status == std::cv_status::timeout) {
-		throw BoilerException(BoilerExitCode::AlreadyConnectedToGC, "Already connected to GC");
-	}
-}
-
-void CSGOClient::OnClientWelcome(const CMsgClientWelcome& msg)
-{
-	m_connectedCV.notify_all();
 }

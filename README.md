@@ -3,18 +3,18 @@
 ## About
 
 This is a console application based on [Boiler](https://bitbucket.org/ACB/boiler/).
-It retrieves the CMsgGCCStrike15_v2_MatchList protobuf message from Steam GC and writes it into the file provided as an argument.
+It retrieves the `CMsgGCCStrike15_v2_MatchList` protobuf message from the Steam GC and writes it into the file provided as an argument.
 Nothing more.
 
 ## Why?
 
-I made this application to add the ability to download last matchmaking demos from the application [CS Demo Manager](https://github.com/akiver/CSGO-Demos-Manager).
+I made this application to add the ability to download last matchmaking demos from the application [CS Demo Manager](https://github.com/akiver/cs-demo-manager).
 
 ## Usage
 
 A ready-to-use executable for each platform can be downloaded from [GitHub](https://github.com/akiver/boiler-writter/releases).
 
-```
+```shell
 ./boiler-writter path_to_the_file_where_data_will_be_written [matchId outcomeId tokenId]
 ```
 
@@ -80,6 +80,10 @@ If you want to generate an Xcode project `cmake -G Xcode`.
 4. `cmake --build . --config Release`
 5. Executable will be in the `bin` folder
 
+## Acknowledgments
+
+- [Boiler](https://bitbucket.org/ACB/boiler/)
+
 ## License
 
-It uses the original [Boiler](https://bitbucket.org/ACB/boiler/) license [GPL v3](https://github.com/akiver/boiler-writter/blob/main/license.txt)
+[MIT](https://github.com/akiver/boiler-writter/blob/main/LICENSE)

@@ -2,6 +2,10 @@ name: Publish new release
 
 on: workflow_dispatch
 
+permissions:
+  id-token: write
+  contents: write
+
 jobs:
   build-windows-x64:
     name: Build Windows x64
@@ -204,10 +208,7 @@ jobs:
           cp macos-arm64/bin/* dist/bin/darwin-arm64
           cp linux-x64/bin/* dist/bin/linux-x64
           zip -r "dist-npm.zip" dist
-          npm publish --access public --registry https://registry.npmjs.org
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NPM_EMAIL: ${{ secrets.NPM_EMAIL }}
+          npm publish
 
       - name: GitHub Release
         uses: ncipollo/release-action@v1

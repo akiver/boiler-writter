@@ -21,7 +21,7 @@ jobs:
           curl https://github.com/protocolbuffers/protobuf/releases/download/v3.20.3/protobuf-cpp-3.20.3.zip -L --output protobuf.zip
           unzip -q protobuf.zip
           mv protobuf-3.20.3 protobuf
-          curl https://partner.steamgames.com/downloads/steamworks_sdk_160.zip --output steamworks_sdk.zip -L
+          curl https://partner.steamgames.com/downloads/steamworks_sdk_163.zip --output steamworks_sdk.zip -L
           unzip -q steamworks_sdk.zip -d steamworks_sdk
 
       - name: Build protobuf
@@ -58,7 +58,7 @@ jobs:
           curl https://github.com/protocolbuffers/protobuf/releases/download/v3.20.3/protobuf-cpp-3.20.3.zip -L --output protobuf.zip
           unzip -q protobuf.zip
           mv protobuf-3.20.3 protobuf
-          curl https://partner.steamgames.com/downloads/steamworks_sdk_160.zip --output steamworks_sdk.zip -L
+          curl https://partner.steamgames.com/downloads/steamworks_sdk_163.zip --output steamworks_sdk.zip -L
           unzip -q steamworks_sdk.zip -d steamworks_sdk
           brew install automake autoconf libtool
 
@@ -96,7 +96,7 @@ jobs:
           curl https://github.com/protocolbuffers/protobuf/releases/download/v3.20.3/protobuf-cpp-3.20.3.zip -L --output protobuf.zip
           unzip -q protobuf.zip
           mv protobuf-3.20.3 protobuf
-          curl https://partner.steamgames.com/downloads/steamworks_sdk_160.zip --output steamworks_sdk.zip -L
+          curl https://partner.steamgames.com/downloads/steamworks_sdk_163.zip --output steamworks_sdk.zip -L
           unzip -q steamworks_sdk.zip -d steamworks_sdk
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
           brew install automake autoconf libtool
@@ -139,7 +139,7 @@ jobs:
           curl https://github.com/protocolbuffers/protobuf/releases/download/v3.20.3/protobuf-cpp-3.20.3.zip -L --output protobuf.zip
           unzip -q protobuf.zip
           mv protobuf-3.20.3 protobuf
-          curl https://partner.steamgames.com/downloads/steamworks_sdk_160.zip --output steamworks_sdk.zip -L
+          curl https://partner.steamgames.com/downloads/steamworks_sdk_163.zip --output steamworks_sdk.zip -L
           unzip -q steamworks_sdk.zip -d steamworks_sdk
           sudo apt-get install build-essential autoconf gcc gcc-multilib g++-multilib libtool -y
 

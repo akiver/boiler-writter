@@ -36,7 +36,7 @@ If they are specified, it will write the `CMsgGCCStrike15_v2_MatchList` message 
 
 1. Install protobuf - from the root folder run:
    1. `cd protobuf/cmake && mkdir build`
-   2. `cmake -G "Visual Studio 17 2022" -DCMAKE_BUILD_TYPE=Release -Dprotobuf_BUILD_TESTS=OFF -DCMAKE_INSTALL_PREFIX=.\build .`
+   2. `cmake -G "Visual Studio 18 2026" -DCMAKE_BUILD_TYPE=Release -Dprotobuf_BUILD_TESTS=OFF -DCMAKE_INSTALL_PREFIX=.\build .`
    3. `cmake --build . --config Release`
    4. `cd ../..`
    5. Add the path `protobuf/cmake/Release` to your `PATH` environment variable (where `protoc.exe` is)

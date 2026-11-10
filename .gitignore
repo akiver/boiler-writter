@@ -19,6 +19,7 @@ win32
 build
 *.vcxproj*
 *.sln
+*.slnx
 .vs
 *.zip
 dist
